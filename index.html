@@ -82,33 +82,40 @@
                             <option value = "busiestMonth"> By Busiest Month </option>
                             <option value = "dayOfWeek"> By Week Day </option>
                         </select>
+
+                        <div class = "heatMapFilterMenuDiv">
+                            <p style = "color: white;">Filter:</p>
+                            <select id = "heatMapFilterMenu">
+                                <option value = "default"> All Vehicles </option>
+                                <option value = "2AxleCars"> 2 Axle Cars </option>
+                                <option value = "2AxleTrucks"> 2 Axle Trucks </option>
+                                <option value = "3AxleTrucks"> 3 Axle Trucks </option>
+                                <option value = "4AxleTrucks"> 4 Axle Trucks </option>
+                                <option value = "2AxleBuses"> 2 Axle Buses </option>
+                                <option value = "3AxleBuses"> 3 Axle Buses </option>
+                                <option value = "RangerVehicles"> Ranger Vehicles </option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class = "heatMapFilterMenuDiv col-md-2">
-                        <p style = "color: white;">Filter:</p>
-                        <select id = "heatMapFilterMenu">
-                            <option value = "default"> All Vehicles </option>
-                            <option value = "2AxleCars"> 2 Axle Cars </option>
-                            <option value = "2AxleTrucks"> 2 Axle Trucks </option>
-                            <option value = "3AxleTrucks"> 3 Axle Trucks </option>
-                            <option value = "4AxleTrucks"> 4 Axle Trucks </option>
-                            <option value = "2AxleBuses"> 2 Axle Buses </option>
-                            <option value = "3AxleBuses"> 3 Axle Buses </option>
-                            <option value = "RangerVehicles"> Ranger Vehicles </option>
-                        </select>
+                    
+                    <div class = "hourlyHeatMapDiv col-md-4" id = "hourlyHeatMapDiv">
+                        <!-- <center><h3 style = "color: white"> Hourly Heat Map: </h3></center> -->
                     </div>
-
-                    <div class = "dailyHeatMapDiv col-md-12" id = "dailyHeatMapDiv"></div>
+                    <div class = "dailyHeatMapDiv col-md-6" id = "dailyHeatMapDiv"></div>
+                    
                 </div>-->
                 <!--daily heat map row
 
             <!---->
             <!--Hourly Heat Map-->
             <!---->
-                <div class = "row">
-                    <center><h3 style = "color: white"> Hourly Heat Map: </h3></center>
-                    <div class = "hourlyHeatMapDiv col-md-12" id = "hourlyHeatMapDiv"></div>
-            </div>
+                <<!-- div class = "row">
+                    
+                    <div class = "hourlyHeatMapDiv col-md-4" id = "hourlyHeatMapDiv">
+                        <center><h3 style = "color: white"> Hourly Heat Map: </h3></center>
+                    </div>
+            </div> -->
             <!--/#container-fluid-->
         </div> 
         <!--/#page-content-wrapper-->
