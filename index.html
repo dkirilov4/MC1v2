@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MC 1</title>
+
+    <!-- CSS Source -->
+    <link rel = "stylesheet" href = "./src/css/main.css" />
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- JS Libraries -->
+
+        <!--D3-->
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.6/d3.min.js"></script>
+        <!--JQuery-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!--Bootstrap-->
+        <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- JS Source -->
+    <script src = "./src/js/main.js"></script>
+    <script src = "./src/js/dataLoader.js"></script>
+
+    <script src = "./src/js/routeHeatMap.js"></script>
+    <script src = "./src/js/dailyHeatMap.js"></script>
+    <script src = "./src/js/hourlyHeatMap.js"></script>
+    
+</head>
+
+
+
+<body onload = "App.start();">
+
+<div id = "wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav" id = "vehicleInfoSidebar">
+                <li class="sidebar-brand"> <a href="#"> Vehicle Information </a> </li>
+                <li> <a href="#">TODO: List Box</a> </li>
+            </ul>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class = "container-fluid">
+                <div class = "row">
+                    <div class = "col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Vehicle Info</a>
+                    </div>
+                </div>
+
+            <!---->
+            <!--Adjacency Matrix Route Map-->
+            <!---->
+                <div class = "row">
+                    <center><h3 style = "color: white;"> Routes: </h3></center>
+
+                <div class = "routeMatrixOrderMenuDiv col-md-1">
+                    <p style = "color: white;">Order:</p>
+                    <select id = "routeMatrixOrderMenu">
+                        <option value = "default"> Default </option>
+                        <option value = "mostEntriesRow"> By Entries (Row) </option>
+                        <option value = "mostEntriesCol"> By Entries (Col) </option>
+                        <option value = "mostEntriesBoth"> By Entries (Both) </option>
+                    </select>
+                </div>
+
+                    <div class = "routeHeatMapDiv col-md-12"></div>
+                </div>
+
+            <!---->
+            <!--Daily Heat Map-->
+            <!---->
+                <div class = "row">
+                    <center><h3 style = "color: white"> Daily Heat Map: </h3></center>
+
+                    <div class = "heatMapOrderMenuDiv col-md-2">
+                        <p style = "color: white;">Order:</p>
+                        <select id = "heatMapOrderMenu">
+                            <option value = "default"> Chronologically </option>
+                            <option value = "busiestDay"> By Busiest Day </option>
+                            <option value = "busiestMonth"> By Busiest Month </option>
+                            <option value = "dayOfWeek"> By Week Day </option>
+                        </select>
+                    </div>
+
+                    <div class = "heatMapFilterMenuDiv col-md-2">
+                        <p style = "color: white;">Filter:</p>
+                        <select id = "heatMapFilterMenu">
+                            <option value = "default"> All Vehicles </option>
+                            <option value = "2AxleCars"> 2 Axle Cars </option>
+                            <option value = "2AxleTrucks"> 2 Axle Trucks </option>
+                            <option value = "3AxleTrucks"> 3 Axle Trucks </option>
+                            <option value = "4AxleTrucks"> 4 Axle Trucks </option>
+                            <option value = "2AxleBuses"> 2 Axle Buses </option>
+                            <option value = "3AxleBuses"> 3 Axle Buses </option>
+                            <option value = "RangerVehicles"> Ranger Vehicles </option>
+                        </select>
+                    </div>
+
+                    <div class = "dailyHeatMapDiv col-md-12" id = "dailyHeatMapDiv"></div>
+                </div>-->
+                <!--daily heat map row
+
+            <!---->
+            <!--Hourly Heat Map-->
+            <!---->
+                <div class = "row">
+                    <center><h3 style = "color: white"> Hourly Heat Map: </h3></center>
+                    <div class = "hourlyHeatMapDiv col-md-12" id = "hourlyHeatMapDiv"></div>
+            </div>
+            <!--/#container-fluid-->
+        </div> 
+        <!--/#page-content-wrapper-->
+    </div> 
+    <!--/#wrapper-->
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+
+</body>
+
+</html>
