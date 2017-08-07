@@ -34,7 +34,7 @@ var HourlyHeatMap = function()
 
     self.createSVGs = function()
     {
-        width = (cellSize * 24) + margin.left + margin.right;
+        width = (cellSize * 24) + margin.left + margin.right + 150;
         height = (cellSize * 40) + margin.top + margin.bottom;
 
         svgContainer = d3.select(".hourlyHeatMapDiv").append("svg")
@@ -63,7 +63,7 @@ var HourlyHeatMap = function()
 
                     if (numEntries < minEntries)
                         minEntries = numEntries;
-                
+
                     if (numEntries > maxEntries)
                         maxEntries = numEntries;
                 }
@@ -118,7 +118,7 @@ var HourlyHeatMap = function()
                                     .append("title")
                                     .text(function(hour) { return "Date: " + date + "\nHour: " + hour + "\nEntries: " + hourlyData[hour].NumEntries})
                             });
-        
+
         rowLabels = svgContainer.append("g")
                                     .attr("class", "hourlyHeatMapRowLabels")
                                     .attr("width", margin.left)
@@ -149,7 +149,7 @@ var HourlyHeatMap = function()
                                     .attr("font-size", function() { return cellSize })
 
         dateLabel = svgContainer.append("text")
-                                    .text(function(d) 
+                                    .text(function(d)
                                     {
                                         var weekDayFormat = d3.timeFormat("%A");
                                         var weekDay = new Date(date);
@@ -158,6 +158,45 @@ var HourlyHeatMap = function()
                                     .attr("fill", "lightgrey")
                                     .attr("font-size", cellSize * 2)
                                     .attr("transform", function() { return "translate(" + (width / 3) + "," + ( height - cellSize * 2) + ")" })
+
+          //Append a defs (for definition) element to your SVG
+          var defs = gContainer.append("defs");
+
+          //Append a linearGradient element to the defs and give it a unique id
+          var linearGradient = defs.append("linearGradient")
+               .attr("id", "linear-gradient");
+
+          linearGradient.selectAll("stop")
+                .data( colorScale.range() )
+                .enter().append("stop")
+                .attr("offset", function(d,i) {return i/(colorScale.range().length-1); })
+                .attr("stop-color", function(d) { return d; });
+
+          // create the rectangle which will hold our gradient
+         var gradientMain =
+           gContainer.append("rect")
+        	.attr("width", 400)
+        	.attr("height", 20)
+          .attr("transform", "rotate(270,0,0)")
+          .attr("x", -400)
+          .attr("y", 250)
+          .style("fill", "url(#linear-gradient)");
+
+            //Append multiple color stops by using D3's data/enter step
+          linearGradient.selectAll("stop")
+              .data( colorScale.range() )
+              .enter().append("stop")
+              .attr("offset", function(d,i) { return i/(colorScale.range().length-1); })
+              .attr("stop-color", function(d) { return d; });
+
+              var scale = d3.scaleLinear()  // v4
+                                    .domain([0, maxEntries])
+                                    .range([0, 400]); // clipped
+                      var axisGroup = gContainer.append("g");
+                      var axis = d3.axisRight()
+                                   .scale(scale)
+                      axisGroup.call(axis)
+                                    .attr("transform","translate(270,0)");
     }
 
     var publiclyAvailable =

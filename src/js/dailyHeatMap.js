@@ -59,7 +59,7 @@ var DailyHeatMap = function()
 
                 if (numEntries < minEntries)
                     minEntries = numEntries;
-                
+
                 if (numEntries > maxEntries)
                     maxEntries = numEntries;
             }
@@ -97,8 +97,8 @@ var DailyHeatMap = function()
                                 .attr("width", cellSize)
                                 .attr("height", cellSize)
                                 .attr("transform", function(sensorName) { return "translate(" + 0 + "," + gateNames.indexOf(sensorName) * cellSize + ")" })
-                                .attr("fill", function(sensorName) 
-                                { 
+                                .attr("fill", function(sensorName)
+                                {
                                     var numEntries = sensorData[sensorName].NumEntries;
 
                                     if (numEntries == 0)
@@ -117,7 +117,7 @@ var DailyHeatMap = function()
                                     d3.selectAll("._" + date).attr("stroke-width", "0px");
                                 })
                                 .append("title")
-                                .text(function(sensorName) 
+                                .text(function(sensorName)
                                 {
                                     var weekDayName = d3.timeFormat("%A");
 
@@ -251,7 +251,7 @@ var DailyHeatMap = function()
             var formatMonthYear = d3.timeFormat("%m-%Y")
 
             var monthYear = formatMonthYear(new Date(date + " 0:00:00"))
-            
+
             if (!totalMonthCounts[monthYear]) {
                 totalMonthCounts[monthYear] = { Date: monthYear, NumEntries: 0 }
                 console.log(monthYear,date);
@@ -351,7 +351,7 @@ var DailyHeatMap = function()
         var gateKey     = e.target.__data__;
 
         var dateKey = textContent.substring(6, 16)
-        
+
         var list = d3.select("#vehicleInfoSidebar")
 
         // while (list.hasChildNodes())
