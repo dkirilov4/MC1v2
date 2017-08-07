@@ -190,7 +190,7 @@ var HourlyHeatMap = function()
               .attr("stop-color", function(d) { return d; });
 
               var scale = d3.scaleLinear()  // v4
-                                    .domain([0, maxEntries])
+                                    .domain([maxEntries, 0])
                                     .range([0, 400]); // clipped
                       var axisGroup = gContainer.append("g");
                       var axis = d3.axisRight()
